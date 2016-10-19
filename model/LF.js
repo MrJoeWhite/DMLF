@@ -101,7 +101,7 @@ LF.prototype.start = function () {
 
 
             });
-            console.log(host);
+            console.log('ws://' + host + '/socket.io/1/websocket/');
             client.connect('ws://' + host + '/socket.io/1/websocket/');
         } catch (e) {
             return console.log(e);
