@@ -60,7 +60,7 @@ var LF = require("./model/LF");
 var HashMap = require("hashmap").HashMap;
 map = new HashMap();
 function getroom(i) {
-    GHR.getRoomUsers("http://www.laifeng.com/center?pageNo="+i, function (err, usersList) {
+    GHR.getRoomUsers("http://www.laifeng.com/center?pageNo=" + i, function (err, usersList) {
         if (err) {
             return console.log(err);
         }
@@ -73,10 +73,15 @@ function getroom(i) {
                 clearInterval(timer);
                 return;
             }
-            var roomid = usersList[i].attribs.href.substring("http://v.laifeng.com/".length);
-            if(!map.get(roomid)){
-                new LF(roomid);
+            try {
+                var roomid = usersList[i].attribs.href.substring("http://v.laifeng.com/".length);
+                if (!map.get(roomid)) {
+                    new LF(roomid);
+                }
+            } catch (e) {
+                console.log(e);
             }
+
             // console.log(href);
             i++;
         }, 5000);
