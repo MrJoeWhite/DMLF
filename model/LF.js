@@ -101,6 +101,7 @@ LF.prototype.start = function () {
 
 
             });
+            console.log(host);
             client.connect('ws://' + host + '/socket.io/1/websocket/');
         } catch (e) {
             return console.log(e);
@@ -109,7 +110,7 @@ LF.prototype.start = function () {
     var request = require('request');
     request(options2, function (err2, response2, body2) {
         if (err2) {
-            return console.log(err2);
+            return console.log("err2"+err2);
         }
         var str = body2.substring(body2.indexOf("<title>") + 7, body2.indexOf("<title>") + 13);
         if ("我们非常抱歉" == str) {
@@ -128,7 +129,7 @@ LF.prototype.start = function () {
         };
         request(options1, function (err1, response1, body1) {
             if (err1) {
-                return console.log(err1);
+                return console.log("err1"+err1);
             }
             DMstart(body1)
         });
