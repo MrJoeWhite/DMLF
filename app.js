@@ -68,7 +68,10 @@ function getroom(i) {
         var i = 0;
         var timer = setInterval(function () {
             if (i >= 120) {
+
+
                 clearInterval(timer);
+                return;
             }
             var roomid = usersList[i].attribs.href.substring("http://v.laifeng.com/".length);
             if(!map.get(roomid)){
